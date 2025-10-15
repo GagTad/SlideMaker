@@ -1,5 +1,5 @@
 #include "Parser.h"
-#include <stdexcept> //std::runtime_error i hamar
+#include <stdexcept>  
 
 Parser::Parser(std::vector<Token> tokens) 
     :m_tokens(std::move(tokens)) , m_position(0){}
@@ -133,5 +133,6 @@ std::unique_ptr<Shape> Parser::parse_square(){
     square->y = y;
     square->side = side;
     return square;
+
 
 }
