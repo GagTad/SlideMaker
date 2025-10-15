@@ -1,5 +1,5 @@
 #include "Tokenizer.h"
-#include <stdexcept>  //std::invalid_argument -> std::stod
+#include <stdexcept>  
 
 std::vector<Token> Tokenizer::tokenize(int argc , char* argv[]){
 
