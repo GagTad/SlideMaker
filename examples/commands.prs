@@ -1,0 +1,17 @@
+
+create_slide "Title Page"
+create_slide "Content"
+select_slide 1
+add circle 100 100 50
+
+
+select_slide 99 
+add line 10 20 
+add rectangle 10 20 30 40
+
+create_slide "Test Slide"
+select_slide 0
+add circle 100 100 50
+add rectangle 200 150 250 100
+add line 50 300 400 350
+export "MyDrawing.svg"
