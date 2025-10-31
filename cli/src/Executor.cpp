@@ -68,48 +68,22 @@ void Executor::executeAddShape(const AddShapeCommand* cmd) {
 }
 
 void Executor::executeExport(const ExportCommand* cmd) {
-   
     Slide* activeSlide = m_presentation.getActiveSlide();
     if (!activeSlide) {
         throw std::runtime_error("Semantic Error: No slide selected to export. Use 'select_slide' first.");
     }
 
-  
     std::ofstream svgFile(cmd->filename);
     if (!svgFile.is_open()) {
         throw std::runtime_error("Execution Error: Could not open file '" + cmd->filename + "' to write.");
     }
 
-     
     svgFile << "<svg width=\"800\" height=\"600\" xmlns=\"http://www.w3.org/2000/svg\">\n";
 
- 
     for (const auto& shape_ptr : activeSlide->getShapes()) {
-       
- 
-        if (auto* circle = dynamic_cast<CircleShape*>(shape_ptr.get())) {
-            svgFile << "  <circle cx=\"" << circle->centerX << "\" cy=\"" << circle->centerY
-                << "\" r=\"" << circle->radius << "\" stroke=\"black\" fill=\"transparent\" />\n";
-        }
-
-       
-        else if (auto* rect = dynamic_cast<RectangleShape*>(shape_ptr.get())) {
-            svgFile << "  <rect x=\"" << rect->x << "\" y=\"" << rect->y
-                << "\" width=\"" << rect->width << "\" height=\"" << rect->height
-                << "\" stroke=\"black\" fill=\"transparent\" />\n";
-        }
-
-        
-        else if (auto* line = dynamic_cast<LineShape*>(shape_ptr.get())) {
-            svgFile << "  <line x1=\"" << line->x1 << "\" y1=\"" << line->y1
-                << "\" x2=\"" << line->x2 << "\" y2=\"" << line->y2
-                << "\" stroke=\"black\" stroke-width=\"2\" />\n";
-        }
-
-        
+        svgFile << "  " << shape_ptr->toSvg() << "\n";
     }
 
-     
     svgFile << "</svg>\n";
 
     svgFile.close();
