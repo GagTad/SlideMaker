@@ -7,7 +7,6 @@
 class Executor {
 public: 
     Executor(Presentation& presentation);
- 
     void execute(const std::unique_ptr<Command>& command);
 
 private:
@@ -19,3 +18,4 @@ private:
     void executeAddShape(const AddShapeCommand* cmd);
     void executeExport(const ExportCommand* cmd);
 };
+
