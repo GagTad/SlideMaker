@@ -8,6 +8,7 @@ std::string Token::toString() const{
         case TokenType::LIST_SLIDES:  typeStr = "LIST_SLIDES";  break;
         case TokenType::SELECT_SLIDE: typeStr = "SELECT_SLIDE"; break;
         case TokenType::ADD:          typeStr = "ADD";          break;
+        case TokenType::EXPORT:       typeStr = "EXPORT";       break;
         case TokenType::IDENTIFIER:   typeStr = "IDENTIFIER";   break;
         case TokenType::NUMBER:       typeStr = "NUMBER";       break;
         case TokenType::STRING_LITERAL: typeStr = "STRING_LITERAL"; break;
