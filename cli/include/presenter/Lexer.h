@@ -6,10 +6,7 @@
 
 class Lexer {
 public:
-   
     Lexer(const std::string& input);
-
-   
     Token getNextToken();
 
 private:
@@ -17,7 +14,7 @@ private:
     size_t m_position;       
     char m_currentChar;      
 
-   
+private:
     void advance();         
     void skipWhitespace();  
     Token makeNumber();      
@@ -25,3 +22,4 @@ private:
     Token makeIdentifier(); 
     Token makeFlag();       
 };
+
