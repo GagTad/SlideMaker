@@ -7,25 +7,21 @@
 
 class Parser {
 public:
- 
     Parser(const std::vector<Token>& tokens);
-
-   
     std::unique_ptr<Command> parse();
 
 private:
     std::vector<Token> m_tokens;
     size_t m_position;
-
-   
+private:
     Token& peek();          
     Token& consume();        
     bool isAtEnd();         
-
-   
+private:
     std::unique_ptr<Command> parseCreateSlide();
     std::unique_ptr<Command> parseSelectSlide();
     std::unique_ptr<Command> parseListSlides();
     std::unique_ptr<Command> parseAdd();
     std::unique_ptr<Command> parseExport();
 };
+
