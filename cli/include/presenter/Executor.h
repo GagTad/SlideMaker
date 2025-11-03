@@ -9,13 +9,14 @@ public:
     Executor(Presentation& presentation);
     void execute(const std::unique_ptr<Command>& command);
 
-private:
-    Presentation& m_presentation;
- 
+private: 
     void executeCreateSlide(const CreateSlideCommand* cmd);
     void executeSelectSlide(const SelectSlideCommand* cmd);
     void executeListSlides(const ListSlidesCommand* cmd);
     void executeAddShape(const AddShapeCommand* cmd);
     void executeExport(const ExportCommand* cmd);
+private:
+    Presentation& m_presentation;
 };
+
 
