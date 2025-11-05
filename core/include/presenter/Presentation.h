@@ -26,7 +26,7 @@ public:
 
     void setActiveSlideId(int id) { m_activeSlideId = id; }
 
-    Slide* getActiveSlide() {
+    Slide getActiveSlide() {
         if (m_activeSlideId >= 0 && m_activeSlideId < m_slides.size()) {
             return m_slides[m_activeSlideId].get();
         }
