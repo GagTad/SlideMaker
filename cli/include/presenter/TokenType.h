@@ -1,28 +1,21 @@
 #pragma once
 
-#pragma once
-
-
 enum class TokenType {
-
-    // Keywords 
-    CREATE_SLIDE,  
-    LIST_SLIDES,    
-    SELECT_SLIDE,   
-    ADD,     
+    CREATE_SLIDE,
+    LIST_SLIDES,
+    SELECT_SLIDE,
+    ADD,
     EXPORT,
+    EXPORT_SLIDESHOW,
+    SAVE,
+    UNDO, 
+    REDO,
 
-    // Literals
-    IDENTIFIER,     
-    NUMBER,         
+    IDENTIFIER,
+    NUMBER,
     STRING_LITERAL,
+    FLAG,
 
-    // Special Symbols
-    FLAG,          
-
-    // Meta Tokens
-    END_OF_INPUT,   
-    UNKNOWN         
+    END_OF_INPUT,
+    UNKNOWN
 };
-
-
