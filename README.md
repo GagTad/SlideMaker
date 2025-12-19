@@ -4,7 +4,7 @@
 
 Instead of dragging and dropping shapes manually, you describe your slides using commands. The engine interprets these commands, builds the internal object model, and exports the result as individual **SVG images** or a fully interactive **HTML Slideshow**.
 
-## 🚀 Key Features
+##  Key Features
 
 *   **Interactive Shell:** Type commands in real-time and see the results.
 *   **Script Execution:** Run complex `.txt` or `.prs` scripts to generate presentations automatically.
@@ -18,7 +18,7 @@ Instead of dragging and dropping shapes manually, you describe your slides using
 
 ---
 
-## 🏗️ Architecture & Design Patterns
+##  Architecture & Design Patterns
 
 This project demonstrates clean architecture and object-oriented design:
 
@@ -30,7 +30,7 @@ This project demonstrates clean architecture and object-oriented design:
 
 ---
 
-## 🛠️ How to Build & Run
+##  How to Build & Run
 
 ### Prerequisites
 *   C++17 compliant compiler (MSVC, GCC, Clang).
@@ -50,7 +50,7 @@ This project demonstrates clean architecture and object-oriented design:
 
 ---
 
-## 📖 Command Reference
+##  Command Reference
 
 ### Slide Management
 | Command | Description | Example |
@@ -85,7 +85,7 @@ Usage: `add <type> <params> [flags]`
 
 ---
 
-## 📝 Example Script
+##  Example Script
 
 Create a file named `demo.txt` and run it:
 
