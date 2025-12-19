@@ -8,7 +8,7 @@ struct Command {
     virtual ~Command() = default;
     virtual void execute(Presentation& presentation) = 0;
 
-    // Undo ֆունկցիոնալ
+    // Undo 
     virtual void undo(Presentation& presentation) {}
     virtual bool isUndoable() const { return false; }
 };
