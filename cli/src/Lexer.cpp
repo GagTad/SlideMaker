@@ -2,18 +2,19 @@
 #include <cctype> 
 #include <map>
 
-
-std::map<std::string, TokenType> keywords = {
+static std::map<std::string, TokenType> keywords = {
     {"create_slide", TokenType::CREATE_SLIDE},
     {"list_slides", TokenType::LIST_SLIDES},
     {"select_slide", TokenType::SELECT_SLIDE},
     {"add", TokenType::ADD},
-    {"export", TokenType::EXPORT}
+    {"export", TokenType::EXPORT},
+    {"export_slideshow", TokenType::EXPORT_SLIDESHOW},
+    {"save", TokenType::SAVE},
+    {"undo", TokenType::UNDO}, 
+    {"redo", TokenType::REDO} 
 };
 
-
-Lexer::Lexer(const std::string& input)
-    : m_input(input), m_position(0) {
+Lexer::Lexer(const std::string& input) : m_input(input), m_position(0) {
     m_currentChar = (m_position < m_input.length()) ? m_input[m_position] : '\0';
 }
 
@@ -23,9 +24,7 @@ void Lexer::advance() {
 }
 
 void Lexer::skipWhitespace() {
-    while (m_currentChar != '\0' && isspace(m_currentChar)) {
-        advance();
-    }
+    while (m_currentChar != '\0' && isspace(m_currentChar)) advance();
 }
 
 Token Lexer::makeNumber() {
@@ -39,7 +38,7 @@ Token Lexer::makeNumber() {
 
 Token Lexer::makeString() {
     std::string result = "";
-    advance(); 
+    advance();
     while (m_currentChar != '\0' && m_currentChar != '"') {
         result += m_currentChar;
         advance();
@@ -54,62 +53,36 @@ Token Lexer::makeIdentifier() {
         result += m_currentChar;
         advance();
     }
-
-   
-    if (keywords.count(result)) {
-        return { keywords[result], result };
-    }
-
+    if (keywords.count(result)) return { keywords[result], result };
     return { TokenType::IDENTIFIER, result };
 }
 
 Token Lexer::makeFlag() {
     std::string result = "";
-  
     if (m_currentChar == '-' && m_position + 1 < m_input.length() && m_input[m_position + 1] == '-') {
-        advance(); 
-        advance(); 
+        advance(); advance();
         while (m_currentChar != '\0' && isalpha(m_currentChar)) {
             result += m_currentChar;
             advance();
         }
         return { TokenType::FLAG, "--" + result };
     }
-   
     std::string unknown_char(1, m_currentChar);
     advance();
     return { TokenType::UNKNOWN, unknown_char };
 }
 
-
 Token Lexer::getNextToken() {
     while (m_currentChar != '\0') {
-        if (isspace(m_currentChar)) {
-            skipWhitespace();
-            continue;
-        }
+        if (isspace(m_currentChar)) { skipWhitespace(); continue; }
+        if (isdigit(m_currentChar)) return makeNumber();
+        if (isalpha(m_currentChar)) return makeIdentifier();
+        if (m_currentChar == '"') return makeString();
+        if (m_currentChar == '-') return makeFlag();
 
-        if (isdigit(m_currentChar)) {
-            return makeNumber();
-        }
-
-        if (isalpha(m_currentChar)) {
-            return makeIdentifier();
-        }
-
-        if (m_currentChar == '"') {
-            return makeString();
-        }
-
-        if (m_currentChar == '-') {
-            return makeFlag();
-        }
-
-      
         std::string unknown_char(1, m_currentChar);
         advance();
         return { TokenType::UNKNOWN, unknown_char };
     }
-
     return { TokenType::END_OF_INPUT, "" };
 }
