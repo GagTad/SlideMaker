@@ -1,7 +1,5 @@
 #pragma once
-
 #include <string>
-#include <vector>
 #include "Token.h"
 
 class Lexer {
@@ -10,16 +8,14 @@ public:
     Token getNextToken();
 
 private:
-    std::string m_input;    
-    size_t m_position;       
-    char m_currentChar;      
+    std::string m_input;
+    size_t m_position;
+    char m_currentChar;
 
-private:
-    void advance();         
-    void skipWhitespace();  
-    Token makeNumber();      
-    Token makeString();    
-    Token makeIdentifier(); 
-    Token makeFlag();       
+    void advance();
+    void skipWhitespace();
+    Token makeNumber();
+    Token makeString();
+    Token makeIdentifier();
+    Token makeFlag();
 };
-
