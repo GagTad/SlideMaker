@@ -11,13 +11,14 @@ public:
     void addShape(std::unique_ptr<Shape> shape) {
         m_shapes.push_back(std::move(shape));
     }
-
-    const std::string& getName() const { return m_name; }
-
-    const std::vector<std::unique_ptr<Shape>>& getShapes() const {
-        return m_shapes;
+    void removeLastShape() {
+        if (!m_shapes.empty()) {
+            m_shapes.pop_back();
+        }
     }
 
+    const std::string& getName() const { return m_name; }
+    const std::vector<std::unique_ptr<Shape>>& getShapes() const { return m_shapes; }
 private:
     std::string m_name;
     std::vector<std::unique_ptr<Shape>> m_shapes;
