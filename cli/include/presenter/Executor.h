@@ -1,22 +1,18 @@
 #pragma once
-
+#include <vector>
 #include <memory>
 #include "Command.h"
 #include "Presentation.h"
 
 class Executor {
-public: 
+public:
     Executor(Presentation& presentation);
-    void execute(const std::unique_ptr<Command>& command);
+    void execute(std::unique_ptr<Command> command);
+    void undo();
+    void redo();
 
-private: 
-    void executeCreateSlide(const CreateSlideCommand* cmd);
-    void executeSelectSlide(const SelectSlideCommand* cmd);
-    void executeListSlides(const ListSlidesCommand* cmd);
-    void executeAddShape(const AddShapeCommand* cmd);
-    void executeExport(const ExportCommand* cmd);
 private:
     Presentation& m_presentation;
+    std::vector<std::unique_ptr<Command>> m_undoStack;
+    std::vector<std::unique_ptr<Command>> m_redoStack;
 };
-
-
