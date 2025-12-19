@@ -24,16 +24,9 @@ std::unique_ptr<Command> Parser::parse() {
     case TokenType::REDO:
         consume();
         return std::make_unique<RedoCommand>();
+
     default: throw std::runtime_error("Syntax Error: Unknown command '" + firstToken.value + "'");
     }
-}
-
-std::unique_ptr<Command> Parser::parseExportSlideshow() {
-    consume();
-    if (isAtEnd() || peek().type != TokenType::STRING_LITERAL) throw std::runtime_error("Expected filename.");
-    auto cmd = std::make_unique<ExportSlideshowCommand>();
-    cmd->filename = consume().value;
-    return cmd;
 }
 
 std::unique_ptr<Command> Parser::parseCreateSlide() {
@@ -51,9 +44,12 @@ std::unique_ptr<Command> Parser::parseSelectSlide() {
     cmd->slideId = std::stoi(consume().value);
     return cmd;
 }
+
 std::unique_ptr<Command> Parser::parseListSlides() {
-    consume(); return std::make_unique<ListSlidesCommand>();
+    consume();
+    return std::make_unique<ListSlidesCommand>();
 }
+
 std::unique_ptr<Command> Parser::parseExport() {
     consume();
     if (isAtEnd() || (peek().type != TokenType::STRING_LITERAL && peek().type != TokenType::IDENTIFIER)) throw std::runtime_error("Expected filename.");
@@ -61,6 +57,15 @@ std::unique_ptr<Command> Parser::parseExport() {
     cmd->filename = consume().value;
     return cmd;
 }
+
+std::unique_ptr<Command> Parser::parseExportSlideshow() {
+    consume();
+    if (isAtEnd() || peek().type != TokenType::STRING_LITERAL) throw std::runtime_error("Expected filename.");
+    auto cmd = std::make_unique<ExportSlideshowCommand>();
+    cmd->filename = consume().value;
+    return cmd;
+}
+
 std::unique_ptr<Command> Parser::parseSave() {
     consume();
     if (isAtEnd() || peek().type != TokenType::STRING_LITERAL) throw std::runtime_error("Expected filename.");
@@ -68,17 +73,35 @@ std::unique_ptr<Command> Parser::parseSave() {
     cmd->filename = consume().value;
     return cmd;
 }
+
 std::unique_ptr<Command> Parser::parseAdd() {
     consume();
-    if (isAtEnd() || peek().type != TokenType::IDENTIFIER) throw std::runtime_error("Expected shape type.");
+
+    if (isAtEnd() || peek().type != TokenType::IDENTIFIER) {
+        throw std::runtime_error("Syntax Error: Expected shape type after 'add'");
+    }
+
     auto cmd = std::make_unique<AddShapeCommand>();
     cmd->shapeType = consume().value;
-    while (!isAtEnd() && peek().type == TokenType::NUMBER) cmd->params.push_back(std::stoi(consume().value));
+    while (!isAtEnd() && peek().type == TokenType::NUMBER) {
+        cmd->params.push_back(std::stoi(consume().value));
+    }
+
     while (!isAtEnd() && peek().type == TokenType::FLAG) {
-        std::string flagName = consume().value;
-        if (isAtEnd()) throw std::runtime_error("Expected value after flag.");
+        std::string flagName = consume().value; 
+
+        if (isAtEnd()) {
+            throw std::runtime_error("Syntax Error: Expected value after flag '" + flagName + "'");
+        }
+        if (peek().type != TokenType::STRING_LITERAL &&
+            peek().type != TokenType::IDENTIFIER &&
+            peek().type != TokenType::NUMBER) {
+            throw std::runtime_error("Syntax Error: Expected valid value after flag '" + flagName + "'");
+        }
+
         std::string flagValue = consume().value;
         cmd->flags[flagName] = flagValue;
     }
+
     return cmd;
 }
