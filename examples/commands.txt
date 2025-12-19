@@ -1,0 +1,37 @@
+create_slide "File Slide 1"
+select_slide 0
+add circle 300 300 100 --color "purple"
+
+create_slide "File Slide 2"
+select_slide 1
+add rectangle 100 100 200 200 --color "green"
+
+export "single_image1.svg"
+
+
+create_slide "My First Slide"
+select_slide 0
+
+
+add circle 400 300 100 --color "red" --fill "pink"
+add rectangle 50 50 200 100 --color "blue" --width "4"
+add line 0 0 800 600 --width "5" --color "green"
+export "output_slide_0.svg"
+
+undo
+
+export "output_slide_1.svg"
+
+redo
+
+export "output_slide_2.svg"
+
+
+create_slide "Second Slide"
+select_slide 1
+add circle 100 100 50 --fill "yellow"
+
+list_slides
+
+export_slideshow "file_presentation.html"
+save "backup.prs"
