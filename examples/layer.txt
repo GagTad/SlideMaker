@@ -1,21 +1,14 @@
 create_slide "Layer Test"
 select_slide 0
 
-// 1. Ստեղծում ենք մեծ ԿԱՐՄԻՐ շրջան (Index 0)
 add circle 300 300 100 --fill "red"
-
-// 2. Ստեղծում ենք փոքր ԿԱՊՈՒՅՏ շրջան (Index 1) - Սա կլինի Կարմիրի վրա
 add circle 200 300 150 --fill "blue"
 
 export_slideshow "before.html" 
-// Արդյունք: Կապույտը Կարմիրի վրա է (երևում է)
 
-// 3. Կապույտը (Index 1) գցում ենք ետև
 send_to_back 1
 
 export_slideshow "after.html"
-// Արդյունք: Կապույտը գնաց Կարմիրի տակ (չի երևա)
-
-// 4. Կապույտը (որը հիմա դարձավ Index 0, որովհետև գնաց սկիզբ) բերում ենք առաջ
 
 bring_to_front 0
+
