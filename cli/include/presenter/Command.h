@@ -2,13 +2,12 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 #include "Presentation.h"
 
 struct Command {
     virtual ~Command() = default;
     virtual void execute(Presentation& presentation) = 0;
-
-    // Undo 
     virtual void undo(Presentation& presentation) {}
     virtual bool isUndoable() const { return false; }
 };
@@ -22,7 +21,7 @@ struct CreateSlideCommand : public Command {
 
 struct SelectSlideCommand : public Command {
     int slideId;
-    int previousId = -1; // State to restore
+    int previousId = -1;
     void execute(Presentation& presentation) override;
     void undo(Presentation& presentation) override;
     bool isUndoable() const override { return true; }
@@ -37,7 +36,71 @@ struct AddShapeCommand : public Command {
     bool isUndoable() const override { return true; }
 };
 
-// Non-undoable commands
+
+struct MoveShapeCommand : public Command {
+    int shapeIndex;
+    int newX, newY;
+    int oldX, oldY;
+    void execute(Presentation& presentation) override;
+    void undo(Presentation& presentation) override;
+    bool isUndoable() const override { return true; }
+};
+
+struct RemoveShapeCommand : public Command {
+    int shapeIndex;
+    std::unique_ptr<Shape> removedShape; // Undo-ի համար պահում ենք օբյեկտը
+    void execute(Presentation& presentation) override;
+    void undo(Presentation& presentation) override;
+    bool isUndoable() const override { return true; }
+};
+
+struct ClearSlideCommand : public Command {
+    std::vector<std::unique_ptr<Shape>> removedShapes; // Undo-ի համար
+    void execute(Presentation& presentation) override;
+    void undo(Presentation& presentation) override;
+    bool isUndoable() const override { return true; }
+};
+
+struct DuplicateSlideCommand : public Command {
+    int slideId;
+    void execute(Presentation& presentation) override;
+    void undo(Presentation& presentation) override;
+    bool isUndoable() const override { return true; }
+};
+
+struct ZOrderCommand : public Command {
+    int shapeIndex;
+    bool toFront;
+    void execute(Presentation& presentation) override;
+};
+
+struct ScaleShapeCommand : public Command {
+    int index;
+    double factor;
+    void execute(Presentation& p) override;
+    void undo(Presentation& p) override;
+    bool isUndoable() const override { return true; }
+};
+
+struct RecolorShapeCommand : public Command {
+    int index;
+    std::string newColor;
+    std::string oldColor;
+    void execute(Presentation& p) override;
+    void undo(Presentation& p) override;
+    bool isUndoable() const override { return true; }
+};
+
+struct MoveSlideCommand : public Command {
+    int fromId;
+    int toId;
+    void execute(Presentation& presentation) override;
+    void undo(Presentation& presentation) override;
+    bool isUndoable() const override { return true; }
+};
+
+// Non-undoable commands 
+
 struct ExportCommand : public Command {
     std::string filename;
     void execute(Presentation& presentation) override;
@@ -52,15 +115,20 @@ struct ListSlidesCommand : public Command {
     void execute(Presentation& presentation) override;
 };
 
+struct ListShapesCommand : public Command {
+    void execute(Presentation& presentation) override;
+};
+
 struct SaveCommand : public Command {
     std::string filename;
     void execute(Presentation& presentation) override;
 };
 
-// Special Commands for Parser
+// Special Commands
 struct UndoCommand : public Command {
     void execute(Presentation&) override {}
 };
 struct RedoCommand : public Command {
     void execute(Presentation&) override {}
 };
+
