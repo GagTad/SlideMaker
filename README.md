@@ -4,20 +4,6 @@
 
 The project is engineered with a strict adherence to **SOLID principles**, ensuring high cohesion, loose coupling, and architectural stability.
 
----
-
-## Table of Contents
-1. [Key Features]
-2. [Architecture & Design](#-architecture--design)
-    - [Core Components](#core-components)
-    - [Design Patterns](#design-patterns)
-    - [Memory Management](#memory-management)
-3. [Engineering Principles](#-engineering-principles-analysis)
-4. [Command Reference (DSL)](#-command-reference-dsl)
-5. [Building and Running](#-building-and-running)
-6. [Export Formats](#-export-formats)
-
----
 
 ## Key Features
 
