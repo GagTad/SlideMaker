@@ -1,14 +1,9 @@
 create_slide "Shapes Demo"
 select_slide 0
 
-// 1. Էլիպս (ձու) - լայնքով նեղ, երկարությամբ ձգված
 add ellipse 400 300 50 100 --color "purple" --fill "pink"
-
-//2. Եռանկյուն (կանաչ բուրգ)
 add triangle 100 500 200 300 300 500 --fill "green" --color "black"
-
-//3. Բազմանկյուն - ԱՍՏՂ (Star)
-//Սա 5 թևանի աստղ է
 add polygon 600 100 650 250 800 250 675 350 725 500 600 400 475 500 525 350 400 250 550 250 --fill "gold" --color "orange"
+
 
 export_slideshow "new_shapes.html"
