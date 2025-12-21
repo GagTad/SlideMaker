@@ -42,3 +42,28 @@ class LineFactory : public IShapeFactory {
 public:
     std::unique_ptr<Shape> createShape(const std::vector<int>& params) override;
 };
+
+class TextFactory : public IShapeFactory {
+public:
+    std::unique_ptr<Shape> createShape(const std::vector<int>& params) override;
+};
+
+class ImageFactory : public IShapeFactory {
+public:
+    std::unique_ptr<Shape> createShape(const std::vector<int>& params) override;
+};
+
+class EllipseFactory : public IShapeFactory {
+public:
+    std::unique_ptr<Shape> createShape(const std::vector<int>& params) override;
+};
+
+class TriangleFactory : public IShapeFactory {
+public:
+    std::unique_ptr<Shape> createShape(const std::vector<int>& params) override;
+};
+
+class PolygonFactory : public IShapeFactory {
+public:
+    std::unique_ptr<Shape> createShape(const std::vector<int>& params) override;
+};
