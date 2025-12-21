@@ -5,10 +5,10 @@ create_slide "Slide 3 (Third)"
 list_slides
 // 0: First, 1: Second, 2: Third
 
-// Տեղափոխում ենք վերջին սլայդը (2) ամենասկիզբ (0)
 move_slide 2 0
 
 list_slides
-// Հիմա պետք է լինի՝ 0: Third, 1: First, 2: Second
+// 0: Third, 1: First, 2: Second
+
 
 export_slideshow "reordered.html"
