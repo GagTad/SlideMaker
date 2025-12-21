@@ -5,6 +5,7 @@ Executor::Executor(Presentation& presentation) : m_presentation(presentation) {}
 
 void Executor::execute(std::unique_ptr<Command> command) {
     if (!command) return;
+    
     if (dynamic_cast<UndoCommand*>(command.get())) {
         undo();
         return;
@@ -42,7 +43,6 @@ void Executor::redo() {
         std::cout << "[INFO] Nothing to redo." << std::endl;
         return;
     }
-
     std::unique_ptr<Command> cmd = std::move(m_redoStack.back());
     m_redoStack.pop_back();
     std::cout << "[REDO] ";
