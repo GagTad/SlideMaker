@@ -10,6 +10,11 @@ Editor::Editor() : m_executor(m_presentation) {
     registry.registerShape("circle", std::make_unique<CircleFactory>());
     registry.registerShape("rectangle", std::make_unique<RectangleFactory>());
     registry.registerShape("line", std::make_unique<LineFactory>());
+    registry.registerShape("text", std::make_unique<TextFactory>());
+    registry.registerShape("image", std::make_unique<ImageFactory>());
+    registry.registerShape("ellipse", std::make_unique<EllipseFactory>());
+    registry.registerShape("triangle", std::make_unique<TriangleFactory>());
+    registry.registerShape("polygon", std::make_unique<PolygonFactory>());
 }
 
 void Editor::run(const std::string& inputFilePath) {
@@ -18,14 +23,12 @@ void Editor::run(const std::string& inputFilePath) {
         std::cerr << "CRITICAL ERROR: Could not open file '" << inputFilePath << "'." << std::endl;
         return;
     }
-
     std::cout << "--- Editor Started: Processing '" << inputFilePath << "' ---" << std::endl;
     std::string line;
     while (std::getline(file, line)) {
-        size_t comment_pos = line.find('#');
+        size_t comment_pos = line.find('//');
         if (comment_pos != std::string::npos) line = line.substr(0, comment_pos);
         if (line.empty() || line.find_first_not_of(" \t\n\r") == std::string::npos) continue;
-
         std::cout << ">> " << line << std::endl;
         processLine(line);
     }
@@ -42,7 +45,6 @@ void Editor::processLine(const std::string& line) {
             token = lexer.getNextToken();
         }
         if (tokens.empty()) return;
-
         Parser parser(tokens);
         std::unique_ptr<Command> command = parser.parse();
         if (command) {
@@ -61,12 +63,10 @@ void Editor::runInteractive() {
         if (!std::getline(std::cin, line)) break; 
         size_t first = line.find_first_not_of(" \t\r\n");
         if (first == std::string::npos) continue; 
-
         if (line == "exit" || line == "quit") {
             std::cout << "Exiting interactive mode..." << std::endl;
             break;
         }
-
         processLine(line);
     }
 }
