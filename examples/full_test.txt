@@ -1,0 +1,31 @@
+# --- Սլայդ 1: Երկրաչափություն ---
+create_slide "Geometry Basics"
+select_slide 0
+add circle 300 300 100 --color "red" --fill "rgba(255,0,0,0.3)"
+add rectangle 50 50 150 100 --color "blue" --width "4"
+# Արտահանում ենք առաջին վիճակը
+export "test_1_geometry.svg"
+
+# --- Սլայդ 2: Աբստրակտ արվեստ ---
+create_slide "Abstract Art"
+select_slide 1
+add line 0 0 800 600 --color "purple" --width "10"
+add line 800 0 0 600 --color "purple" --width "10"
+add circle 400 300 50 --fill "black"
+export "test_2_abstract.svg"
+
+# --- Սլայդ 3: Դատարկ (Edge Case) ---
+create_slide "Empty Slide"
+select_slide 2
+# Ոչինչ չենք ավելացնում
+export "test_3_empty.svg"
+
+# --- Վերադարձ Սլայդ 1-ին ---
+# Ստուգում ենք՝ արդյոք հիշում է հին սլայդը և կարող ենք ավելացնել
+select_slide 0
+add line 0 300 800 300 --color "black" --width "1"
+# Արտահանում ենք թարմացված տարբերակը
+export "test_1_geometry_updated.svg"
+
+# --- Պահպանում ---
+save "full_test_backup.prs"
