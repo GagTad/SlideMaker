@@ -5,11 +5,21 @@
 static std::map<std::string, TokenType> keywords = {
     {"create_slide", TokenType::CREATE_SLIDE},
     {"list_slides", TokenType::LIST_SLIDES},
+    {"list_shapes", TokenType::LIST_SHAPES},
     {"select_slide", TokenType::SELECT_SLIDE},
     {"add", TokenType::ADD},
+    {"remove_shape", TokenType::REMOVE_SHAPE},
+    {"clear_slide", TokenType::CLEAR_SLIDE},
     {"export", TokenType::EXPORT},
     {"export_slideshow", TokenType::EXPORT_SLIDESHOW},
     {"save", TokenType::SAVE},
+    {"move_shape", TokenType::MOVE_SHAPE},
+	{"scale_shape", TokenType::SCALE_SHAPE},
+	{"recolor_shape", TokenType::RECOLOR_SHAPE},
+    {"duplicate_slide", TokenType::DUPLICATE_SLIDE},
+    {"bring_to_front", TokenType::BRING_FRONT},
+    {"send_to_back", TokenType::SEND_BACK},
+    {"move_slide", TokenType::MOVE_SLIDE},
     {"undo", TokenType::UNDO}, 
     {"redo", TokenType::REDO} 
 };
