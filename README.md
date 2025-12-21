@@ -67,30 +67,6 @@ The project utilizes **RAII (Resource Acquisition Is Initialization)** and **Sma
 
 ---
 
-## Engineering Principles Analysis
-
-This project has been rigorously refactored to meet high software quality standards:
-
-1.  **Cohesion (High):**
-    *   Classes have single responsibilities. `Presentation` manages data. `Serializer` handles files. `Command` handles orchestration. Logic and UI are strictly separated.
-
-2.  **Coupling (Loose):**
-    *   The Model (`Presentation`) has no knowledge of the View (`Console`).
-    *   The Model has no knowledge of the History (`Executor`).
-    *   Shapes are decoupled from the Parser via the Factory.
-
-3.  **Invariance (Strong):**
-    *   Factories act as gatekeepers, throwing exceptions for invalid parameters (e.g., negative radius).
-    *   State methods protect against invalid indices.
-
-4.  **Sufficiency (Optimal):**
-    *   The API covers the full CRUD lifecycle. There are no "missing" features for a standard editor (e.g., `Scale` and `Recolor` close the modification loop).
-
-5.  **Primitiveness (Atomic):**
-    *   Methods in the Model perform atomic actions without side effects (like auto-selection or printing), allowing the Controller to compose complex behaviors.
-
----
-
 ## Command Reference (DSL)
 
 The editor accepts commands via a file or interactive shell.
