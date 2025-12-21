@@ -10,17 +10,27 @@ public:
     std::unique_ptr<Command> parse();
 
 private:
-    std::vector<Token> m_tokens;
-    size_t m_position;
     Token& peek();
     Token& consume();
     bool isAtEnd();
-
     std::unique_ptr<Command> parseCreateSlide();
     std::unique_ptr<Command> parseSelectSlide();
     std::unique_ptr<Command> parseListSlides();
+    std::unique_ptr<Command> parseListShapes();
     std::unique_ptr<Command> parseAdd();
+    std::unique_ptr<Command> parseRemoveShape();
+    std::unique_ptr<Command> parseClearSlide();
+    std::unique_ptr<Command> parseMoveSlide();
+    std::unique_ptr<Command> parseMoveShape();
+    std::unique_ptr<Command> parseScaleShape();
+	std::unique_ptr<Command> parseRecolorShape();
     std::unique_ptr<Command> parseExport();
     std::unique_ptr<Command> parseSave(); 
+    std::unique_ptr<Command> parseZOrder(bool toFront);
+    std::unique_ptr<Command> parseDuplicateSlide();
     std::unique_ptr<Command> parseExportSlideshow();
+
+private:
+    std::vector<Token> m_tokens;
+    size_t m_position;
 };
