@@ -1,0 +1,13 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white" />
+  <rect x="0" y="0" width="800" height="600" stroke="none" fill="#dfe6e9" stroke-width="2"  />
+  <text x="50" y="60" font-size="40" fill="black" font-family="Arial, sans-serif">Undo </text>
+  <image href="stack.png" x="390" y="150" width="370" height="330" preserveAspectRatio="none" />
+  <text x="50" y="200" font-size="24" fill="black" font-family="Arial, sans-serif">We use two stacks:</text>
+  <rect x="50" y="250" width="270" height="50" stroke="black" fill="#fab1a0" stroke-width="2"  />
+  <text x="120" y="275" font-size="20" fill="black" font-family="Arial, sans-serif">Undo Stack</text>
+  <rect x="50" y="320" width="270" height="50" stroke="black" fill="#81ecec" stroke-width="2"  />
+  <text x="120" y="345" font-size="20" fill="black" font-family="Arial, sans-serif">Redo Stack</text>
+  <text x="50" y="450" font-size="20" fill="grey" font-family="Arial, sans-serif">Operations transfer commands</text>
+  <text x="50" y="480" font-size="20" fill="grey" font-family="Arial, sans-serif">between these stacks.</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white" />
+  <rect x="0" y="0" width="800" height="600" stroke="none" fill="#2c3e50" stroke-width="2"  />
+  <text x="300" y="40" font-size="40" fill="white" font-family="Arial, sans-serif">System Stats</text>
+  <rect x="100" y="150" width="250" height="150" stroke="white" fill="#0984e3" stroke-width="2"  />
+  <text x="170" y="180" font-size="20" fill="white" font-family="Arial, sans-serif">Language</text>
+  <text x="150" y="230" font-size="40" fill="white" font-family="Arial, sans-serif">C++ 17</text>
+  <rect x="450" y="150" width="250" height="150" stroke="white" fill="#00b894" stroke-width="2"  />
+  <text x="520" y="180" font-size="20" fill="white" font-family="Arial, sans-serif">Dependencies</text>
+  <text x="470" y="230" font-size="16" fill="white" font-family="Arial, sans-serif">1.STL</text>
+  <text x="470" y="250" font-size="16" fill="white" font-family="Arial, sans-serif">2. nlohmann,json</text>
+  <text x="470" y="270" font-size="16" fill="white" font-family="Arial, sans-serif">3. TinyXML-2</text>
+  <rect x="100" y="350" width="250" height="150" stroke="white" fill="#6c5ce7" stroke-width="2"  />
+  <text x="170" y="380" font-size="20" fill="white" font-family="Arial, sans-serif">Architecture</text>
+  <text x="130" y="430" font-size="35" fill="white" font-family="Arial, sans-serif">OOP, MVC</text>
+  <rect x="450" y="350" width="250" height="150" stroke="white" fill="#e17055" stroke-width="2"  />
+  <text x="520" y="380" font-size="20" fill="white" font-family="Arial, sans-serif">Status</text>
+  <text x="460" y="430" font-size="30" fill="white" font-family="Arial, sans-serif">Production Ready</text>
+</svg>

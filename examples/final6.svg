@@ -1,0 +1,19 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white" />
+  <rect x="0" y="0" width="800" height="600" stroke="none" fill="#2d3436" stroke-width="2"  />
+  <text x="50" y="40" font-size="40" fill="white" font-family="Arial, sans-serif">Under the Hood: Lexer</text>
+  <text x="50" y="150" font-size="24" fill="#b2bec3" font-family="Arial, sans-serif">Raw Code:</text>
+  <rect x="50" y="190" width="700" height="60" stroke="none" fill="#636e72" stroke-width="2"  />
+  <text x="70" y="210" font-size="30" fill="#55efc4" font-family="Arial, sans-serif">add circle 50</text>
+  <line x1="400" y1="260" x2="400" y2="320" stroke="white" stroke-width="4" />
+  <text x="50" y="340" font-size="24" fill="#b2bec3" font-family="Arial, sans-serif">Tokens Generated:</text>
+  <rect x="100" y="380" width="150" height="80" stroke="white" fill="#e17055" stroke-width="2"  />
+  <text x="130" y="410" font-size="20" fill="white" font-family="Arial, sans-serif">TOKEN</text>
+  <text x="145" y="440" font-size="16" fill="black" font-family="Arial, sans-serif">ADD</text>
+  <rect x="300" y="380" width="200" height="80" stroke="white" fill="#0984e3" stroke-width="2"  />
+  <text x="330" y="410" font-size="20" fill="white" font-family="Arial, sans-serif">IDENTIFIER</text>
+  <text x="360" y="440" font-size="16" fill="black" font-family="Arial, sans-serif">circle</text>
+  <rect x="550" y="380" width="150" height="80" stroke="white" fill="#fdcb6e" stroke-width="2"  />
+  <text x="580" y="410" font-size="20" fill="black" font-family="Arial, sans-serif">NUMBER</text>
+  <text x="600" y="440" font-size="16" fill="black" font-family="Arial, sans-serif">50</text>
+</svg>

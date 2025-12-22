@@ -1,0 +1,8 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white" />
+  <rect x="0" y="0" width="800" height="600" stroke="none" fill="#ffffff" stroke-width="2"  />
+  <text x="50" y="60" font-size="40" fill="black" font-family="Arial, sans-serif">Pattern: Factory</text>
+  <image href="factory.png" x="100" y="200" width="650" height="150" preserveAspectRatio="none" />
+  <text x="100" y="500" font-size="20" fill="#2c3e50" font-family="Arial, sans-serif">Allows adding new Shapes (like Polygon) without changing the Parser.</text>
+  <text x="100" y="530" font-size="20" fill="#27ae60" font-family="Arial, sans-serif">Open ,Closed Principle compliant.</text>
+</svg>

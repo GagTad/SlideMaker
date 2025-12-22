@@ -1,0 +1,24 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white" />
+  <rect x="0" y="0" width="800" height="600" stroke="none" fill="#ecf0f1" stroke-width="2"  />
+  <text x="50" y="40" font-size="40" fill="#2d3436" font-family="Arial, sans-serif">Data Serialization</text>
+  <text x="50" y="90" font-size="24" fill="#7f8c8d" font-family="Arial, sans-serif">Save & Export in multiple formats.</text>
+  <rect x="50" y="150" width="200" height="300" stroke="none" fill="#2d3436" stroke-width="2"  />
+  <text x="110" y="170" font-size="24" fill="white" font-family="Arial, sans-serif">.TXT</text>
+  <line x1="60" y1="200" x2="240" y2="200" stroke="white" stroke-width="1" />
+  <text x="70" y="220" font-size="14" fill="#00cec9" font-family="Arial, sans-serif">add circle 10...</text>
+  <text x="70" y="240" font-size="14" fill="#00cec9" font-family="Arial, sans-serif">create_slide...</text>
+  <text x="70" y="400" font-size="16" fill="black" font-family="Arial, sans-serif">Input </text>
+  <rect x="280" y="150" width="200" height="300" stroke="none" fill="#f1c40f" stroke-width="2"  />
+  <text x="340" y="170" font-size="24" fill="black" font-family="Arial, sans-serif">JSON</text>
+  <line x1="290" y1="200" x2="470" y2="200" stroke="black" stroke-width="1" />
+  <text x="300" y="220" font-size="14" fill="black" font-family="Arial, sans-serif">{ 'type': 'rect',</text>
+  <text x="300" y="240" font-size="14" fill="black" font-family="Arial, sans-serif">  'x': 10 }</text>
+  <text x="300" y="400" font-size="16" fill="black" font-family="Arial, sans-serif">Data Exchange</text>
+  <rect x="510" y="150" width="200" height="300" stroke="none" fill="#e17055" stroke-width="2"  />
+  <text x="570" y="170" font-size="24" fill="white" font-family="Arial, sans-serif">XML</text>
+  <line x1="520" y1="200" x2="700" y2="200" stroke="white" stroke-width="1" />
+  <text x="530" y="220" font-size="14" fill="white" font-family="Arial, sans-serif"><shape type='rect'></text>
+  <text x="530" y="240" font-size="14" fill="black" font-family="Arial, sans-serif">  <x>10<</text>
+  <text x="530" y="400" font-size="16" fill="white" font-family="Arial, sans-serif">Legacy Support</text>
+</svg>
