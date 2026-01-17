@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Presentation</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #1e1e1e; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; color: white; }
+        header { margin-top: 20px; margin-bottom: 10px; text-align: center; }
+        h1 { margin: 0; color: #00d2d3; }
+        h2 { margin: 5px 0 0 0; color: #aaa; font-weight: normal; font-size: 1.2rem; }
+        .slide-container { position: relative; width: 800px; height: 600px; background: #2f3640; box-shadow: 0 0 20px rgba(0,0,0,0.5); border: 1px solid #444; }
+        .slide { display: none; width: 100%; height: 100%; }
+        .active { display: block; }
+        svg { width: 100%; height: 100%; display: block; }
+        .controls { margin-top: 20px; background: #333; padding: 10px 20px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 15px; }
+        button { padding: 8px 16px; border: none; background: #00d2d3; color: #2d3436; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight:bold; transition: 0.2s; }
+        button:hover { background: #54a0ff; color: white; }
+        button.fs-btn { background: #ff9f43; color: #2d3436; }
+        button.fs-btn:hover { background: #eccc68; }
+        .counter { font-weight: bold; color: #ccc; min-width: 60px; text-align: center; }
+        
+        :fullscreen { background: black; }
+        :fullscreen body { background: black; justify-content: center; }
+        :fullscreen header, :fullscreen .controls { display: none; }
+        :fullscreen .slide-container { width: 100vw; height: 100vh; border: none; box-shadow: none; background: black; display: flex; align-items: center; justify-content: center; }
+        :fullscreen svg { width: 100%; height: 100%; max-width: 100%; max-height: 100%; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SlideMaker 2.0</h1>
+        <h2 id='slide-title'>...</h2>
+    </header>
+    <div class='slide-container' id='main-container'>
+        <div class='slide active' id='slide_0' data-name="Intro v2.0">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#1e272e;stroke:none;stroke-width:1;" />
+<circle cx="700" cy="100" r="80" style="fill:#00d2d3;stroke:none;stroke-width:1;" />
+<polygon points="0,500 800,600 0,600 " style="fill:#2f3640;stroke:none;stroke-width:1;" />
+<text x="180" y="220" font-size="70" style="fill:#ecf0f1;">SlideMaker</text>
+<text x="550" y="220" font-size="70" style="fill:#00d2d3;">2.0</text>
+<text x="220" y="290" font-size="24" style="fill:#8395a7;">Architecture Refactored</text>
+<rect x="280" y="350" width="60" height="60" style="fill:#ff9f43;stroke:none;stroke-width:1;" />
+<text x="295" y="370" font-size="20" style="fill:black;">C++</text>
+<rect x="360" y="350" width="60" height="60" style="fill:#ff6b6b;stroke:none;stroke-width:1;" />
+<text x="375" y="370" font-size="20" style="fill:black;">STL</text>
+<rect x="440" y="350" width="60" height="60" style="fill:#1dd1a1;stroke:none;stroke-width:1;" />
+<text x="455" y="370" font-size="20" style="fill:black;">OOP</text>
+<text x="70" y="550" font-size="18" style="fill:#ff9f43;">Author: Gagik Tadevosyan</text>
+<text x="600" y="550" font-size="16" style="fill:#54a0ff;">No External Libs</text>
+            </svg>
+        </div>
+        <div class='slide' id='slide_1' data-name="GodClass">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#1e272e;stroke:none;stroke-width:1;" />
+<text x="50" y="50" font-size="40" style="fill:#ff6b6b;">1. Killing the God Class</text>
+<rect x="100" y="150" width="250" height="350" style="fill:#c0392b;stroke:white;stroke-width:1;" />
+<text x="120" y="180" font-size="24" style="fill:white;">OLD Presentation</text>
+<line x1="100" y1="210" x2="350" y2="210" style="fill:none;stroke:white;stroke-width:2;" />
+<text x="120" y="230" font-size="16" style="fill:white;">m_slides (Data)</text>
+<text x="120" y="260" font-size="16" style="fill:white;">moveShape() (Logic)</text>
+<text x="120" y="290" font-size="16" style="fill:white;">recolorShape() (Logic)</text>
+<text x="120" y="320" font-size="16" style="fill:white;">undo() (History)</text>
+<text x="120" y="350" font-size="16" style="fill:white;">extractShape() (Helper)</text>
+<text x="150" y="450" font-size="20" style="fill:black;">TOO HEAVY!</text>
+<line x1="380" y1="300" x2="450" y2="300" style="fill:none;stroke:white;stroke-width:5;" />
+<rect x="500" y="150" width="200" height="100" style="fill:#27ae60;stroke:white;stroke-width:1;" />
+<text x="530" y="190" font-size="20" style="fill:white;">Presentation</text>
+<text x="550" y="220" font-size="16" style="fill:black;">(Data Only)</text>
+<rect x="500" y="270" width="200" height="100" style="fill:#2980b9;stroke:white;stroke-width:1;" />
+<text x="550" y="310" font-size="20" style="fill:white;">Commands</text>
+<text x="550" y="340" font-size="16" style="fill:black;">(Logic)</text>
+<rect x="500" y="390" width="200" height="100" style="fill:#8e44ad;stroke:white;stroke-width:1;" />
+<text x="530" y="430" font-size="20" style="fill:white;">CmdHistory</text>
+<text x="550" y="460" font-size="16" style="fill:black;">(Undo/Redo)</text>
+            </svg>
+        </div>
+        <div class='slide' id='slide_2' data-name="Visitor">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#1e272e;stroke:none;stroke-width:1;" />
+<text x="50" y="50" font-size="40" style="fill:#00d2d3;">2. No More Dynamic Casts</text>
+<rect x="50" y="150" width="320" height="200" style="fill:#2f3640;stroke:#7f8c8d;stroke-width:1;" />
+<text x="70" y="180" font-size="20" style="fill:#eccc68;">Old Executor.cpp:</text>
+<text x="70" y="220" font-size="16" style="fill:#ff6b6b;">if (dynamic_cast<Undo*>(cmd))</text>
+<text x="70" y="250" font-size="16" style="fill:white;">   undo();</text>
+<text x="70" y="280" font-size="16" style="fill:#ff6b6b;">else if (dynamic_cast<Redo*)...</text>
+<text x="100" y="320" font-size="16" style="fill:#ff6b6b;">Slow & Ugly (RTTI)</text>
+<line x1="400" y1="250" x2="450" y2="250" style="fill:none;stroke:white;stroke-width:4;" />
+<rect x="480" y="150" width="270" height="200" style="fill:#2f3640;stroke:#00d2d3;stroke-width:1;" />
+<text x="500" y="180" font-size="20" style="fill:#eccc68;">New Visitor Pattern:</text>
+<text x="500" y="220" font-size="16" style="fill:#00d2d3;">shape->accept(visitor);</text>
+<text x="500" y="250" font-size="16" style="fill:white;">visitor.visit(Circle);</text>
+<text x="500" y="280" font-size="16" style="fill:white;">visitor.visit(Rect);</text>
+<text x="500" y="320" font-size="16" style="fill:#00d2d3;">Compile-time Safety!</text>
+<text x="50" y="450" font-size="20" style="fill:white;">We separated 'Data' (Shape) from 'Behavior' (Export/Json/Xml).</text>
+            </svg>
+        </div>
+        <div class='slide' id='slide_3' data-name="Serialization">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#1e272e;stroke:none;stroke-width:1;" />
+<text x="50" y="50" font-size="40" style="fill:#ff9f43;">3. Custom Serialization</text>
+<text x="50" y="120" font-size="24" style="fill:#8395a7;">We removed dependencies on Shape.h</text>
+<rect x="100" y="200" width="250" height="150" style="fill:#34495e;stroke:white;stroke-width:1;" />
+<text x="120" y="230" font-size="20" style="fill:white;">Old Shape Class</text>
+<text x="120" y="270" font-size="16" style="fill:#ff6b6b;">virtual string toSvg()</text>
+<text x="120" y="300" font-size="16" style="fill:#ff6b6b;">virtual string serialize()</text>
+<rect x="450" y="150" width="250" height="100" style="fill:#27ae60;stroke:white;stroke-width:1;" />
+<text x="500" y="190" font-size="20" style="fill:white;">JsonVisitor</text>
+<text x="480" y="220" font-size="14" style="fill:black;">Generates JSON manually</text>
+<rect x="450" y="270" width="250" height="100" style="fill:#d35400;stroke:white;stroke-width:1;" />
+<text x="500" y="310" font-size="20" style="fill:white;">XmlVisitor</text>
+<text x="480" y="340" font-size="14" style="fill:black;">Generates XML manually</text>
+<rect x="450" y="390" width="250" height="100" style="fill:#2980b9;stroke:white;stroke-width:1;" />
+<text x="500" y="430" font-size="20" style="fill:white;">SvgVisitor</text>
+<text x="480" y="460" font-size="14" style="fill:black;">Generates SVG manually</text>
+            </svg>
+        </div>
+        <div class='slide' id='slide_4' data-name="History">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#1e272e;stroke:none;stroke-width:1;" />
+<text x="50" y="50" font-size="40" style="fill:#1dd1a1;">4. Command History</text>
+<image x="450" y="150" width="300" height="300" href="stack.png" />
+<text x="50" y="150" font-size="24" style="fill:white;">Undo / Redo Architecture</text>
+<rect x="50" y="250" width="300" height="60" style="fill:#ee5253;stroke:none;stroke-width:1;" />
+<text x="70" y="290" font-size="20" style="fill:white;">Undo Stack (Vector)</text>
+<rect x="50" y="330" width="300" height="60" style="fill:#0abde3;stroke:none;stroke-width:1;" />
+<text x="70" y="370" font-size="20" style="fill:white;">Redo Stack (Vector)</text>
+<text x="50" y="450" font-size="20" style="fill:#8395a7;">Commands own the data via</text>
+<text x="320" y="450" font-size="20" style="fill:#1dd1a1;">std::unique_ptr</text>
+<text x="50" y="480" font-size="20" style="fill:#8395a7;">No memory leaks during Undo/Redo!</text>
+            </svg>
+        </div>
+        <div class='slide' id='slide_5' data-name="Summary">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#1e272e;stroke:none;stroke-width:1;" />
+<text x="300" y="40" font-size="40" style="fill:white;">Summary</text>
+<rect x="50" y="150" width="200" height="150" style="fill:#00cec9;stroke:none;stroke-width:1;" />
+<text x="80" y="200" font-size="24" style="fill:black;">Clean</text>
+<text x="80" y="240" font-size="16" style="fill:black;">SRP & SOLID</text>
+<rect x="300" y="150" width="200" height="150" style="fill:#fd79a8;stroke:none;stroke-width:1;" />
+<text x="330" y="200" font-size="24" style="fill:black;">Fast</text>
+<text x="330" y="240" font-size="16" style="fill:black;">No RTTI/Casts</text>
+<rect x="550" y="150" width="200" height="150" style="fill:#fab1a0;stroke:none;stroke-width:1;" />
+<text x="580" y="200" font-size="24" style="fill:black;">Light</text>
+<text x="580" y="240" font-size="16" style="fill:black;">Zero Deps</text>
+<text x="200" y="400" font-size="30" style="fill:#ffeaa7;">SlideMaker 2.0 is Production Ready.</text>
+            </svg>
+        </div>
+        <div class='slide' id='slide_6' data-name="End">
+            <svg viewBox='0 0 800 600' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'>
+<rect x="0" y="0" width="800" height="600" style="fill:#000000;stroke:none;stroke-width:1;" />
+<text x="250" y="250" font-size="60" style="fill:#00d2d3;">Thank You</text>
+<text x="280" y="350" font-size="24" style="fill:#8395a7;">Ready for Q&A</text>
+<text x="300" y="550" font-size="16" style="fill:#636e72;">Generated by SlideMaker 2.0 CLI</text>
+            </svg>
+        </div>
+
+    </div>
+
+    <div class='controls'>
+        <button onclick='prev()'>Previous</button>
+        <span class='counter' id='counter'>1 / 7</span>
+        <button onclick='next()'>Next</button>
+        <button class='fs-btn' onclick='toggleFullScreen()'><b>&#x26F6; Full Screen</b></button>
+    </div>
+
+    <script>
+        let current = 0; 
+        const total = 7;
+
+        function updateUI() {
+            if (total === 0) return;
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            const activeSlide = document.getElementById('slide_' + current);
+            if(activeSlide) {
+                activeSlide.classList.add('active');
+                document.getElementById('slide-title').innerText = activeSlide.getAttribute('data-name');
+                document.getElementById('counter').innerText = (current + 1) + ' / ' + total;
+            }
+        }
+
+        function next() { if(current < total - 1) { current++; updateUI(); } }
+        function prev() { if(current > 0) { current--; updateUI(); } }
+
+        function toggleFullScreen() {
+            const elem = document.documentElement;
+            if (!document.fullscreenElement) { elem.requestFullscreen(); } else { document.exitFullscreen(); }
+        }
+
+        document.getElementById('main-container').addEventListener('click', function() {
+            if(document.fullscreenElement) next(); 
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') next();
+            if(e.key === 'ArrowLeft') prev();
+            if(e.key === 'f') toggleFullScreen();
+        });
+
+        updateUI();
+    </script>
+</body>
+</html>
