@@ -1,0 +1,190 @@
+// SlideMaker v2.0
+
+// SLIDE 1: INTRO
+create_slide "Intro v2.0"
+select_slide 0
+
+add rectangle 0 0 800 600 --fill "#1e272e" --color "none"
+
+add circle 700 100 80 --fill "#00d2d3" --color "none" --opacity "0.3" 
+add polygon 0 500 800 600 0 600 --fill "#2f3640" --color "none"
+
+add text 180 220 70 --content "SlideMaker" --fill "#ecf0f1"
+add text 550 220 70 --content "2.0" --fill "#00d2d3"
+add text 220 290 24 --content "Architecture Refactored" --fill "#8395a7"
+
+add rectangle 280 350 60 60 --fill "#ff9f43" --color "none" // C++
+add text 295 370 20 --content "C++" --fill "black"
+
+add rectangle 360 350 60 60 --fill "#ff6b6b" --color "none" // STL
+add text 375 370 20 --content "STL" --fill "black"
+
+add rectangle 440 350 60 60 --fill "#1dd1a1" --color "none" // OOP
+add text 455 370 20 --content "OOP" --fill "black"
+
+add text 70 550 18 --content "Author: Gagik Tadevosyan" --fill "#ff9f43"
+add text 600 550 16 --content "No External Libs" --fill "#54a0ff"
+
+export "slide1_intro.svg"
+
+// SLIDE 2: THE GOD CLASS PROBLEM
+create_slide "GodClass"
+select_slide 1
+
+add rectangle 0 0 800 600 --fill "#1e272e" --color "none"
+add text 50 50 40 --content "1. Killing the God Class" --fill "#ff6b6b"
+
+add rectangle 100 150 250 350 --fill "#c0392b" --color "white"
+add text 120 180 24 --content "OLD Presentation" --fill "white"
+add line 100 210 350 210 --color "white" --width "2"
+add text 120 230 16 --content "m_slides (Data)" --fill "white"
+add text 120 260 16 --content "moveShape() (Logic)" --fill "white"
+add text 120 290 16 --content "recolorShape() (Logic)" --fill "white"
+add text 120 320 16 --content "undo() (History)" --fill "white"
+add text 120 350 16 --content "extractShape() (Helper)" --fill "white"
+add text 150 450 20 --content "TOO HEAVY!" --fill "black"
+
+// Arrow
+add line 380 300 450 300 --color "white" --width "5"
+
+
+add rectangle 500 150 200 100 --fill "#27ae60" --color "white"
+add text 530 190 20 --content "Presentation" --fill "white"
+add text 550 220 16 --content "(Data Only)" --fill "black"
+
+add rectangle 500 270 200 100 --fill "#2980b9" --color "white"
+add text 550 310 20 --content "Commands" --fill "white"
+add text 550 340 16 --content "(Logic)" --fill "black"
+
+add rectangle 500 390 200 100 --fill "#8e44ad" --color "white"
+add text 530 430 20 --content "CmdHistory" --fill "white"
+add text 550 460 16 --content "(Undo/Redo)" --fill "black"
+
+export "slide2_godclass.svg"
+
+// SLIDE 3: VISITOR PATTERN
+create_slide "Visitor"
+select_slide 2
+
+add rectangle 0 0 800 600 --fill "#1e272e" --color "none"
+add text 50 50 40 --content "2. No More Dynamic Casts" --fill "#00d2d3"
+
+
+add rectangle 50 150 320 200 --fill "#2f3640" --color "#7f8c8d"
+add text 70 180 20 --content "Old Executor.cpp:" --fill "#eccc68"
+add text 70 220 16 --content "if (dynamic_cast<Undo*>(cmd))" --fill "#ff6b6b"
+add text 70 250 16 --content "   undo();" --fill "white"
+add text 70 280 16 --content "else if (dynamic_cast<Redo*)..." --fill "#ff6b6b"
+add text 100 320 16 --content "Slow & Ugly (RTTI)" --fill "#ff6b6b"
+
+
+add line 400 250 450 250 --color "white" --width "4"
+
+
+add rectangle 480 150 270 200 --fill "#2f3640" --color "#00d2d3"
+add text 500 180 20 --content "New Visitor Pattern:" --fill "#eccc68"
+add text 500 220 16 --content "shape->accept(visitor);" --fill "#00d2d3"
+add text 500 250 16 --content "visitor.visit(Circle);" --fill "white"
+add text 500 280 16 --content "visitor.visit(Rect);" --fill "white"
+add text 500 320 16 --content "Compile-time Safety!" --fill "#00d2d3"
+
+add text 50 450 20 --content "We separated 'Data' (Shape) from 'Behavior' (Export/Json/Xml)." --fill "white"
+
+export "slide3_visitor.svg"
+
+// SLIDE 4: CUSTOM SERIALIZATION
+create_slide "Serialization"
+select_slide 3
+
+add rectangle 0 0 800 600 --fill "#1e272e" --color "none"
+add text 50 50 40 --content "3. Custom Serialization" --fill "#ff9f43"
+
+add text 50 120 24 --content "We removed dependencies on Shape.h" --fill "#8395a7"
+
+
+add rectangle 100 200 250 150 --fill "#34495e" --color "white"
+add text 120 230 20 --content "Old Shape Class" --fill "white"
+add text 120 270 16 --content "virtual string toSvg()" --fill "#ff6b6b"
+add text 120 300 16 --content "virtual string serialize()" --fill "#ff6b6b"
+
+
+add rectangle 450 150 250 100 --fill "#27ae60" --color "white"
+add text 500 190 20 --content "JsonVisitor" --fill "white"
+add text 480 220 14 --content "Generates JSON manually" --fill "black"
+
+add rectangle 450 270 250 100 --fill "#d35400" --color "white"
+add text 500 310 20 --content "XmlVisitor" --fill "white"
+add text 480 340 14 --content "Generates XML manually" --fill "black"
+
+add rectangle 450 390 250 100 --fill "#2980b9" --color "white"
+add text 500 430 20 --content "SvgVisitor" --fill "white"
+add text 480 460 14 --content "Generates SVG manually" --fill "black"
+
+export "slide4_serialization.svg"
+
+// SLIDE 5: COMMAND HISTORY
+create_slide "History"
+select_slide 4
+
+add rectangle 0 0 800 600 --fill "#1e272e" --color "none"
+add text 50 50 40 --content "4. Command History" --fill "#1dd1a1"
+
+add image 450 150 300 300 --path "stack.png"
+
+add text 50 150 24 --content "Undo / Redo Architecture" --fill "white"
+
+// Visualizing Stack
+add rectangle 50 250 300 60 --fill "#ee5253" --color "none"
+add text 70 290 20 --content "Undo Stack (Vector)" --fill "white"
+
+add rectangle 50 330 300 60 --fill "#0abde3" --color "none"
+add text 70 370 20 --content "Redo Stack (Vector)" --fill "white"
+
+add text 50 450 20 --content "Commands own the data via" --fill "#8395a7"
+add text 320 450 20 --content "std::unique_ptr" --fill "#1dd1a1"
+add text 50 480 20 --content "No memory leaks during Undo/Redo!" --fill "#8395a7"
+
+export "slide5_history.svg"
+
+// SLIDE 6: SUMMARY
+create_slide "Summary"
+select_slide 5
+
+add rectangle 0 0 800 600 --fill "#1e272e" --color "none"
+add text 300 40 40 --content "Summary" --fill "white"
+
+
+add rectangle 50 150 200 150 --fill "#00cec9" --color "none"
+add text 80 200 24 --content "Clean" --fill "black"
+add text 80 240 16 --content "SRP & SOLID" --fill "black"
+
+
+add rectangle 300 150 200 150 --fill "#fd79a8" --color "none"
+add text 330 200 24 --content "Fast" --fill "black"
+add text 330 240 16 --content "No RTTI/Casts" --fill "black"
+
+
+add rectangle 550 150 200 150 --fill "#fab1a0" --color "none"
+add text 580 200 24 --content "Light" --fill "black"
+add text 580 240 16 --content "Zero Deps" --fill "black"
+
+add text 200 400 30 --content "SlideMaker 2.0 is Production Ready." --fill "#ffeaa7"
+
+// SLIDE 8: END
+create_slide "End"
+select_slide 6
+
+add rectangle 0 0 800 600 --fill "#000000" --color "none"
+
+add text 250 250 60 --content "Thank You" --fill "#00d2d3"
+add text 280 350 24 --content "Ready for Q&A" --fill "#8395a7"
+
+add text 300 550 16 --content "Generated by SlideMaker 2.0 CLI" --fill "#636e72"
+
+export "slide6_summary.svg"
+
+
+export_slideshow "presentation_v2_neon.html"
+export_json "data_v2.json"
+
+export_xml "data_v2.xml"
